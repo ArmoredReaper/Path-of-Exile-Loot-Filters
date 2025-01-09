@@ -1,0 +1,1257 @@
+#================================================================================
+# Table of Contents
+#================================================================================
+# [0000] Data
+# [0100] Overrides
+# [0200] Uncut Gems
+# [0300] Basic Currency
+#   [0301] Divine Tier
+#   [0302] Exalted Tier
+#   [0303] Chaos Tier
+#   [0304] Bubblegum Tier
+#   [0305] Scroll Tier
+#   [0310] Gold
+#   [0320] Runes
+# [0400] Trials
+#   [0401] Trial Tokens
+#   [0402] Trial of the Sekhemas Relics
+#   [0403] Trial of the Sekhemas Keys
+#   [0404] Trial of Chaos Soul Cores
+#   [0405] Ultimatum Fragments
+# [0500] Waystones and Tablets
+#   [0501]-[0516] Tier I-XVI Waystones
+#   [0520] Tablets
+#   [0530] Pinnacle Fragments
+# [0600] League-specific Loot
+#   [0610] Breach
+#     [0611] Breachstones
+#     [0612] Breach Splinters
+#     [0613] Breach Rings
+#     [0614] Catalysts
+#   [0620] Delirium
+#     [0621] Simulacrums
+#     [0622] Simulacrum Splinters
+#     [0623] Distilled Emotions
+#   [0630] Expedition
+#     [0631] Logbooks
+#     [0632] Expedition Currency
+#   [0640] Essences
+#     [0641] Greater Essences
+#     [0642] Normal Essences
+#   [0650] Ritual
+#     [0651] Omens
+#     [0652] Ritual Fragments
+# [0700] Gear
+#   [0710] Salvageable Items
+#   [0720] Uniques
+#   [0730] Rares
+#   [0740] Jewellery
+#   [0750] Jewels
+#   [0760] Chance Orb Bases
+# [0800] Campaign Progressive Display
+# [0900] Fallbacks
+
+#================================================================================
+# [0000] Data
+#================================================================================
+
+# Softcore filter for Path of Exile 2 designed by Catulus (still a work in progress though)
+# Last updated on 2025-01-09 for Path of Exile version 0.1.0f
+# Indexes in the Table of Contents can be used to quickly jump to a specific section
+# Overrides section can be used to setup the filter for a specific build's gearing needs
+
+# Drop Minimap Icons
+#   Currency: Circle/Star
+#   Amulets/Rings: Moon
+#   Jewels: Hexagon
+#   Waystones/Maps: Square
+#   Uniques: Star
+
+# Currency Styling
+#   Divine Tier:
+#     Text/Border: 255 0 0
+#     Background: 255 255 255
+#     Alert: Sound 6 Red - Minimap 0 Red Star
+#     Size: 45
+#   Exalted Tier:
+#     Text/Border: 255 255 255
+#     Background: 210 155 30
+#     Alert: Sound 5 White - Minimap 1 Yellow Circle
+#     Size: 45
+#   Chaos Tier:
+#     Text/Border: 255 205 130
+#     Background: 75 50 10
+#     Alert: Sound 2 Yellow - Minimap 1 Yellow Circle
+#     Size: 40
+#   Bubblegum Tier:
+#     Text/Border: 220 190 130
+#     Alert: Minimap 2 Grey Circle
+#     Size: 35
+
+# Trial Styling
+#   Rare Drop:
+#     Text/Border: 65 20 80
+#     Background: 255 205 255
+#   Normal Drop:
+#     Text/Border: 255 205 255
+#     Background: 65 20 80
+
+# Breach Styling
+#   Rare Drop:
+#     Text/Border: 75 0 75
+#     Background: 205 0 205
+#   Normal Drop:
+#     Text/Border: 205 0 205
+#     Background: 75 0 75
+
+# Delirium Styling
+#   Rare Drop:
+#     Text/Border: 150 150 150
+#     Background: 255 255 255
+#   Normal Drop:
+#     Text/Border: 255 255 255
+#     Background: 150 150 150
+
+# Expedition Styling
+#   Rare Drop:
+#     Text/Border: 10 100 110
+#     Background: 25 205 215
+#   Normal Drop:
+#     Text/Border: 25 205 215
+#     Background: 10 100 110
+
+# Waystone Area Levels
+#   Tier I-IV: 65-68
+#   Tier V-IX: 69-73
+#   Tier X-XIV: 74-78
+#   Tier XV-XVI: 79-80
+
+
+
+#================================================================================
+# [0100] Overrides
+#================================================================================
+# Add any specific overrides here, e.g.
+# 
+# --- Use this for armour ---
+# Show
+#   Class == "Helmet" "Body Armour" "Gloves" "Boots"
+#   BaseArmour == 0
+#   BaseEvasion > 0
+#   BaseEnergyShield > 0
+#   SetFontSize 40
+# 
+# --- Use this for main/off hand
+# Show
+#   Class == "Bows" "Quivers"
+#   SetFontSize 40
+# 
+# Hide
+#   Class == "Helmet" "Body Armour" "Gloves" "Boots" "Foci" "Shields" "Quivers" "Bows" "Crossbows" "One Hand Maces" "Two Hand Maces" "Quarterstaves" "Wands" "Sceptres" "Staves"
+
+
+
+#================================================================================
+# [0200] Uncut Gems
+#================================================================================
+# Highlight spirit gems
+Show
+  BaseType "Uncut Spirit Gem"
+  SetTextColor 20 240 240
+  SetBorderColor 20 240 240
+  PlayAlertSound 2 300
+  PlayEffect Cyan
+  MinimapIcon 1 Cyan Triangle
+  SetFontSize 40
+
+# Highlight all skill and support gems during campaign
+Show
+  AreaLevel < 65
+  BaseType "Uncut Skill Gem" "Uncut Support Gem"
+  SetTextColor 20 240 240
+  SetBorderColor 20 240 240
+  PlayAlertSound 2 300
+  PlayEffect Cyan
+  MinimapIcon 1 Cyan Triangle
+  SetFontSize 40
+
+# Don't highlight level 16- skill gems, but do highlight 17+
+Show
+  BaseType "Uncut Skill Gem"
+  ItemLevel <= 16
+  SetTextColor 20 240 240
+  SetBorderColor 20 240 240
+  SetFontSize 35
+
+Show
+  BaseType "Uncut Skill Gem"
+  ItemLevel >= 17
+  SetTextColor 20 240 240
+  SetBorderColor 20 240 240
+  PlayAlertSound 2 300
+  PlayEffect Cyan
+  MinimapIcon 1 Cyan Triangle
+  SetFontSize 40
+
+# Don't highlight support gems after campaign
+Show
+  BaseType "Uncut Support Gem"
+  SetTextColor 20 240 240
+  SetBorderColor 20 240 240
+  SetFontSize 35
+
+
+
+#================================================================================
+# [0300] Basic Currency
+#================================================================================
+# Current Exalted Orb to Divine Orb Exchange Ratio
+#   1 div = 116 ex  (2024-01-08)
+#   0.1 div = 12 ex
+#   0.01 div = 1 ex
+#
+# Currency Tiers
+#   Divine Tier: 1+ div
+#   Exalted Tier: 0.1+ div
+#   Chaos Tier: 0.01+ div
+#   Bubblegum Tier: < 0.01 div
+
+# [0301] Divine Tier (100+ ex / 1+ div)
+Show
+  Class == "Stackable Currency"
+  BaseType "Mirror of Kalandra" "Divine Orb" "Perfect Jeweller's Orb"
+  SetTextColor 255 0 0
+  SetBorderColor 255 0 0
+  SetBackgroundColor 255 255 255
+  PlayAlertSound 6 300
+  PlayEffect Red
+  MinimapIcon 0 Red Star
+  SetFontSize 45
+
+# [0302] Exalted Tier (10+ ex / 0.1+ div)
+Show
+  Class == "Stackable Currency" 
+  BaseType "Greater Jeweller's Orb" "Exalted Orb"
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  SetBackgroundColor 240 90 35
+  PlayAlertSound 5 300
+  PlayEffect White
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 45
+
+# [0303] Chaos Tier (1+ ex)
+Show
+  Class == "Stackable Currency"
+  BaseType "Orb of Annulment" "Orb of Chance" "Chaos Orb" "Gemcutter's Prism" "Glassblower's Bauble" "Regal Orb" "Artificer's Orb" "Chance Shard" "Armourer's Scrap"
+  SetTextColor 255 205 90
+  SetBorderColor 255 205 90
+  SetBackgroundColor 75 50 10
+  PlayAlertSound 2 300
+  PlayEffect Yellow
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 40
+
+# [0304] Bubblegum Tier (< 1 ex)
+Show
+  AreaLevel > 70
+  Class == "Stackable Currency"
+  BaseType "Orb of Augmentation" "Orb of Transmutation" "Orb of Alchemy" "Regal Shard" "Artificer's Shard" "Lesser Jeweller's Orb" "Blacksmith's Whetstone" "Arcanist's Etcher"
+  SetTextColor 220 190 130
+  SetBorderColor 220 190 130
+  SetFontSize 35
+
+Show
+  Class == "Stackable Currency"
+  BaseType "Orb of Augmentation" "Orb of Transmutation" "Orb of Alchemy" "Regal Shard" "Artificer's Shard" "Lesser Jeweller's Orb" "Blacksmith's Whetstone" "Arcanist's Etcher"
+  SetTextColor 220 190 130
+  MinimapIcon 2 Grey Circle
+  SetFontSize 35
+
+# [0305] Scroll Tier
+# Hide Scrolls of Wisdom on maps
+Hide
+  AreaLevel >= 65
+  Class == "Stackable Currency"
+  BaseType "Scroll of Wisdom"
+  Rarity <= Magic
+
+Show
+  Class == "Stackable Currency"
+  BaseType "Scroll of Wisdom" "Shard"
+
+#--------------------------------------------------
+
+# [0310] Gold
+Show
+  AreaLevel >= 70
+  BaseType == "Gold"
+  StackSize >= 1000
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayEffect Orange Temp
+
+Show
+  AreaLevel < 70
+  BaseType == "Gold"
+  StackSize >= 500
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayEffect Orange Temp
+
+Show
+  BaseType == "Gold"
+  SetTextColor 180 180 180
+  SetBorderColor 0 0 0
+  SetBackgroundColor 0 0 0 150
+
+#--------------------------------------------------
+
+# [0320] Runes
+# Bubblegum Tier (< 0.01 div)
+Show
+  BaseType "Desert Rune" "Glacial Rune" "Storm Rune" "Iron Rune" "Body Rune" "Mind Rune" "Vision Rune" "Rebirth Rune" "Inspiration Rune" "Stone Rune"
+  SetTextColor 220 190 130
+  MinimapIcon 2 Grey Circle
+  SetFontSize 35
+
+
+
+#============================================================
+# [0400] Trials
+#============================================================
+
+# [0401] Trial Tokens
+Show
+  BaseType "Djinn Barya" "Inscribed Ultimatum"
+  SetTextColor 65 20 80
+  SetBorderColor 65 20 80
+  SetBackgroundColor 255 205 255
+  PlayAlertSound 2 300
+  PlayEffect Pink
+  MinimapIcon 1 Pink Cross
+  SetFontSize 40
+
+# [0402] Trial of the Sekhemas Relics
+Show
+  Class == "Relic"
+  SetTextColor 255 205 255
+  SetBorderColor 255 205 255
+  SetBackgroundColor 65 20 80
+  PlayAlertSound 3 300
+  PlayEffect Pink
+  MinimapIcon 1 Pink Circle
+  SetFontSize 40
+
+# [0403] Trial of the Sekhemas Keys
+Show
+  BaseType "Gold Key" "Silver Key" "Bronze Key"
+  SetTextColor 65 20 80
+  SetBorderColor 65 20 80
+  SetBackgroundColor 255 205 255
+  PlayAlertSound 2 300
+  PlayEffect Pink
+  MinimapIcon 1 Pink Cross
+  SetFontSize 40
+
+# [0404] Trial of Chaos Soul Cores
+# Divine Tier (1+ div)
+Show
+  BaseType "Soul Core of Azcapa"
+  SetTextColor 255 0 0
+  SetBorderColor 255 0 0
+  SetBackgroundColor 255 255 255
+  PlayAlertSound 6 300
+  PlayEffect Red
+  MinimapIcon 0 Red Star
+  SetFontSize 45
+
+# Exalted Tier (0.1+ div)
+Show
+  BaseType "Soul Core of Zalatl" "Soul Core of Citaqualotl"
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  SetBackgroundColor 210 155 30
+  PlayAlertSound 5 300
+  PlayEffect White
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 45
+
+# Chaos Tier (0.01+ div)
+Show
+  BaseType "Soul Core of Topotante" "Soul Core of Tacati" "Soul Core of Opiloti" "Soul Core of Jiquani" "Soul Core of Puhuarte" "Soul Core of Tzamoto" "Soul Core of Xopec" "Soul Core of Quipolatl" "Soul Core of Ticaba" "Soul Core of Cholotl" "Soul Core of Zantipi"
+  SetTextColor 255 205 130
+  SetBorderColor 255 205 130
+  SetBackgroundColor 75 50 10
+  PlayAlertSound 2 300
+  PlayEffect Yellow
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 40
+
+# Bubblegum Tier (< 0.01 div)
+Show
+  BaseType "Soul Core of Atmohua"
+  SetTextColor 220 190 130
+  SetBorderColor 220 190 130
+  MinimapIcon 2 Grey Circle
+  SetFontSize 35
+
+# [0405] Ultimatum Fragments
+# Exalted Tier (0.1+ div)
+Show
+  BaseType "Deadly Fate" "Cowardly Fate" "Victorious Fate"
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  SetBackgroundColor 210 155 30
+  PlayAlertSound 5 300
+  PlayEffect White
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 45
+
+
+
+#============================================================
+# [0500] Waystones and Tablets
+#============================================================
+# Waystones show only when AreaLevel is at most 3 levels over the waystone's level
+
+# [0501] Tier I Waystones
+Show
+  AreaLevel <= 65
+  BaseType "Waystone"
+  WaystoneTier == 1
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 68
+  BaseType "Waystone"
+  WaystoneTier == 1
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0502] Tier II Waystones
+Show
+  AreaLevel <= 66
+  BaseType "Waystone"
+  WaystoneTier == 2
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 69
+  BaseType "Waystone"
+  WaystoneTier == 2
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0503] Tier III Waystones
+Show
+  AreaLevel <= 67
+  BaseType "Waystone"
+  WaystoneTier == 3
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 70
+  BaseType "Waystone"
+  WaystoneTier == 3
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0504] Tier IV Waystones
+Show
+  AreaLevel <= 68
+  BaseType "Waystone"
+  WaystoneTier == 4
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 71
+  BaseType "Waystone"
+  WaystoneTier == 4
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0505] Tier V Waystones
+Show
+  AreaLevel <= 69
+  BaseType "Waystone"
+  WaystoneTier == 5
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 72
+  BaseType "Waystone"
+  WaystoneTier == 5
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0506] Tier VI Waystones
+Show
+  AreaLevel <= 70
+  BaseType "Waystone"
+  WaystoneTier == 6
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 73
+  BaseType "Waystone"
+  WaystoneTier == 6
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0507] Tier VII Waystones
+Show
+  AreaLevel <= 71
+  BaseType "Waystone"
+  WaystoneTier == 7
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 74
+  BaseType "Waystone"
+  WaystoneTier == 7
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0508] Tier VIII Waystones
+Show
+  AreaLevel <= 72
+  BaseType "Waystone"
+  WaystoneTier == 8
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 75
+  BaseType "Waystone"
+  WaystoneTier == 8
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0509] Tier IX Waystones
+Show
+  AreaLevel <= 73
+  BaseType "Waystone"
+  WaystoneTier == 9
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 76
+  BaseType "Waystone"
+  WaystoneTier == 9
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0510] Tier X Waystones
+Show
+  AreaLevel <= 74
+  BaseType "Waystone"
+  WaystoneTier == 10
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 77
+  BaseType "Waystone"
+  WaystoneTier == 10
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0511] Tier XI Waystones
+Show
+  AreaLevel <= 75
+  BaseType "Waystone"
+  WaystoneTier == 10
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 78
+  BaseType "Waystone"
+  WaystoneTier == 11
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0512] Tier XII Waystones
+Show
+  AreaLevel <= 76
+  BaseType "Waystone"
+  WaystoneTier == 12
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 79
+  BaseType "Waystone"
+  WaystoneTier == 12
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0513] Tier XIII Waystones
+Show
+  AreaLevel <= 77
+  BaseType "Waystone"
+  WaystoneTier == 13
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 80
+  BaseType "Waystone"
+  WaystoneTier == 13
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0514] Tier XIV Waystones
+Show
+  AreaLevel <= 78
+  BaseType "Waystone"
+  WaystoneTier == 14
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 81
+  BaseType "Waystone"
+  WaystoneTier == 14
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0515] Tier XV Waystones
+Show
+  AreaLevel <= 79
+  BaseType "Waystone"
+  WaystoneTier == 15
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 82
+  BaseType "Waystone"
+  WaystoneTier == 15
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0516] Tier XVI Waystones
+Show
+  AreaLevel <= 80
+  BaseType "Waystone"
+  WaystoneTier == 16
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  PlayAlertSound 2 300
+  PlayEffect White
+  MinimapIcon 1 White Square
+  SetFontSize 40
+
+Show
+  AreaLevel <= 83
+  BaseType "Waystone"
+  WaystoneTier == 16
+  SetTextColor 200 200 200
+  SetBorderColor 200 200 200
+  PlayEffect White Temp
+  MinimapIcon 2 Grey Square
+
+# [0520] Tablets
+Show
+  BaseType " Tablet"
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  SetBackgroundColor 100 100 100
+  PlayAlertSound 4 300
+  PlayEffect White
+  MinimapIcon 1 White Cross
+  SetFontSize 45
+
+# [0530] Pinnacle Fragments
+# Divine Tier (1+ div)
+# Show
+#   BaseType "Faded Crisis Fragment"
+#   SetTextColor 255 0 0
+#   SetBorderColor 255 0 0
+#   SetBackgroundColor 255 255 255
+#   PlayAlertSound 6 300
+#   PlayEffect Red
+#   MinimapIcon 0 Red Star
+#   SetFontSize 45
+
+# Exalted Tier (0.1+ div)
+# Show
+#   BaseType "Ancient Crisis Fragment" "Weathered Crisis Fragment"
+#   SetTextColor 255 255 255
+#   SetBorderColor 255 255 255
+#   SetBackgroundColor 210 155 30
+#   PlayAlertSound 5 300
+#   PlayEffect White
+#   MinimapIcon 1 Yellow Circle
+#  SetFontSize 45
+
+# Fragments can't be filtered, defaulting to Divine Tier
+Show
+  Class == "Pinnacle Keys"
+  SetTextColor 255 0 0
+  SetBorderColor 255 0 0
+  SetBackgroundColor 255 255 255
+  PlayAlertSound 6 300
+  PlayEffect Red
+  MinimapIcon 0 Red Star
+  SetFontSize 45
+
+
+#============================================================
+# [0600] League-specific Loot
+#============================================================
+
+# [0610] Breach
+# [0611] Breachstones
+Show
+  BaseType "Breachstone"
+  SetTextColor 75 0 75
+  SetBorderColor 75 0 75
+  SetBackgroundColor 205 0 205
+  PlayAlertSound 1 300
+  PlayEffect Purple
+  MinimapIcon 1 Purple Square
+  SetFontSize 45
+
+# [0612] Breach Splinters
+Show
+  BaseType "Breach Splinter"
+  SetTextColor 205 0 205
+  SetBorderColor 205 0 205
+  SetBackgroundColor 75 0 75
+  PlayEffect Purple Temp
+
+# [0613] Breach Rings
+Show
+  BaseType "Breach Ring"
+  SetTextColor 75 0 75
+  SetBorderColor 75 0 75
+  SetBackgroundColor 205 0 205
+  PlayAlertSound 2 300
+  PlayEffect Purple
+  MinimapIcon 1 Purple Moon
+  SetFontSize 35
+
+# [0614] Catalysts
+# Bubblegum Tier (< 0.01 div)
+Show
+  BaseType "Flesh Catalyst" "Neural Catalyst" "Carapace Catalyst" "Adaptive Catalyst" "Xoph's Catalyst" "Tul's Catalyst" "Esh's Catalyst" "Uul-Netol's Catalyst" "Reaver Catalyst" "Sibilant Catalyst" "Chayula's Catalyst" "Skittering Catalyst"
+  SetTextColor 220 190 130
+  SetBorderColor 220 190 130
+  MinimapIcon 2 Grey Circle
+  SetFontSize 35
+
+#--------------------------------------------------
+
+# [0620] Delirium
+# [0621] Simulacrums
+Show
+  BaseType "Simulacrum"
+  SetTextColor 150 150 150
+  SetBorderColor 150 150 150
+  SetBackgroundColor 255 255 255
+  PlayAlertSound 1 300
+  PlayEffect Grey
+  MinimapIcon 1 Grey Square
+  SetFontSize 40
+
+# [0622] Simulacrum Splinters
+Show
+  BaseType "Simulacrum Splinter"
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  SetBackgroundColor 150 150 150
+  PlayEffect Grey Temp
+
+# [0623] Distilled Emotions
+# Divine Tier (1+ div)
+Show
+  BaseType "Distilled Suffering" "Distilled Isolation"
+  SetTextColor 255 0 0
+  SetBorderColor 255 0 0
+  SetBackgroundColor 255 255 255
+  PlayAlertSound 6 300
+  PlayEffect Red
+  MinimapIcon 0 Red Star
+  SetFontSize 45
+
+# Exalted Tier (0.1+ div)
+Show
+  BaseType "Distilled Despair" "Distilled Fear"
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  SetBackgroundColor 210 155 30
+  PlayAlertSound 5 300
+  PlayEffect White
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 45
+
+# Chaos Tier (0.01+ div)
+Show
+  BaseType "Distilled Guilt" "Distilled Greed" "Distilled Paranoia" "Distilled Envy" "Distilled Disgust"
+  SetTextColor 255 205 130
+  SetBorderColor 255 205 130
+  SetBackgroundColor 75 50 10
+  PlayAlertSound 2 300
+  PlayEffect Yellow
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 40
+
+# Bubblegum Tier (< 0.01 div)
+Show
+  BaseType "Distilled Ire"
+  SetTextColor 220 190 130
+  SetBorderColor 220 190 130
+  MinimapIcon 2 Grey Circle
+  SetFontSize 35
+
+#--------------------------------------------------
+
+# [0630] Expedition
+# [0631] Expedition Logbooks
+Show
+  Class == "Expedition Logbooks"
+  SetTextColor 10 100 110
+  SetBorderColor 10 100 110
+  SetBackgroundColor 25 205 215
+  PlayAlertSound 1 300
+  PlayEffect Cyan
+  MinimapIcon 1 Cyan Square
+  SetFontSize 45
+
+# [0632] Expedition Currency
+# Chaos Tier (0.01+ div)
+Show
+  BaseType "Exotic Coinage"
+  SetTextColor 255 205 130
+  SetBorderColor 255 205 130
+  SetBackgroundColor 75 50 10
+  PlayAlertSound 2 300
+  PlayEffect Yellow
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 40
+
+# Bubblegum Tier (< 0.01 div)
+Show
+  BaseType "Broken Circle Artifact" "Black Scythe Artifact" "Order Artifact" "Sun Artifact"
+  SetTextColor 220 190 130
+  SetBorderColor 220 190 130
+  MinimapIcon 2 Grey Circle
+  SetFontSize 35
+
+#--------------------------------------------------
+
+# [0640] Essences
+# [0641] Greater Essences
+# Divine Tier (1+ div)
+Show
+  BaseType "Greater Essence of Haste"
+  SetTextColor 255 0 0
+  SetBorderColor 255 0 0
+  SetBackgroundColor 255 255 255
+  PlayAlertSound 6 300
+  PlayEffect Red
+  MinimapIcon 0 Red Star
+  SetFontSize 45
+
+# Exalted Tier (0.1+ div)
+Show
+  BaseType "Greater Essence of the Mind" "Greater Essence of Enhancement" "Greater Essence of the Infinite" "Greater Essence of Ice" "Greater Essence of Electricity" "Greater Essence of Torment" "Greater Essence of Battle" "Greater Essence of Sorcery" "Greater Essence of Ruin"
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  SetBackgroundColor 210 155 30
+  PlayAlertSound 5 300
+  PlayEffect White
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 45
+
+# Chaos Tier (0.01+ div)
+Show
+  BaseType "Greater Essence of the Body" "Greater Essence of Flames"
+  SetTextColor 255 205 130
+  SetBorderColor 255 205 130
+  SetBackgroundColor 75 50 10
+  PlayAlertSound 2 300
+  PlayEffect Yellow
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 40
+
+# [0642] Normal Essences
+# Chaos Tier (0.01+ div)
+Show
+  BaseType "Essence of Electricity" "Essence of Haste"
+  SetTextColor 255 205 130
+  SetBorderColor 255 205 130
+  SetBackgroundColor 75 50 10
+  PlayAlertSound 2 300
+  PlayEffect Yellow
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 40
+
+# Bubblegum Tier (< 0.01 div)
+Show
+  BaseType "Essence of the Body" "Essence of the Mind" "Essence of Enhancement" "Essence of the Infinite" "Essence of Flames" "Essence of Ice" "Essence of Torment" "Essence of Battle" "Essence of Sorcery" "Essence of Ruin"
+  SetTextColor 220 190 130
+  SetBorderColor 220 190 130
+  MinimapIcon 2 Grey Circle
+  SetFontSize 35
+
+#--------------------------------------------------
+
+# [0650] Ritual
+# [0651] Omens
+# Divine Tier (1+ div)
+Show
+  BaseType "Omen of Corruption" "Omen of Whittling" "Omen of Sinistral Erasure" "Omen of Dextral Erasure" "Omen of Sinistral Annulment" "Omen of Dextral Annulment"
+  SetTextColor 255 0 0
+  SetBorderColor 255 0 0
+  SetBackgroundColor 255 255 255
+  PlayAlertSound 6 300
+  PlayEffect Red
+  MinimapIcon 0 Red Star
+  SetFontSize 45
+
+# Exalted Tier (0.1+ div)
+Show
+  BaseType "Omen of Amelioration"
+  SetTextColor 255 255 255
+  SetBorderColor 255 255 255
+  SetBackgroundColor 210 155 30
+  PlayAlertSound 5 300
+  PlayEffect White
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 45
+
+# Chaos Tier (0.01+ div)
+Show
+  BaseType "Omen of Sinistral Alchemy" "Omen of Resurgence" "Omen of Sinistral Exaltation" "Omen of Greater Annulment" "Omen of Greater Exaltation"
+  SetTextColor 255 205 130
+  SetBorderColor 255 205 130
+  SetBackgroundColor 75 50 10
+  PlayAlertSound 2 300
+  PlayEffect Yellow
+  MinimapIcon 1 Yellow Circle
+  SetFontSize 40
+
+# Bubblegum Tier (< 0.01 div)
+Show
+  BaseType "Omen of Dextral Alchemy" "Omen of Sinistral Coronation" "Omen of Dextral Coronation" "Omen of Refreshment" "Omen of Dextral Exaltation"
+  SetTextColor 220 190 130
+  SetBorderColor 220 190 130
+  MinimapIcon 2 Grey Circle
+  SetFontSize 35
+
+# [0652] Ritual Fragments
+# Divine Tier (1+ div)
+Show
+  BaseType "An Audience with the King"
+  SetTextColor 255 0 0
+  SetBorderColor 255 0 0
+  SetBackgroundColor 255 255 255
+  PlayAlertSound 6 300
+  PlayEffect Red
+  MinimapIcon 0 Red Square
+  SetFontSize 45
+
+
+
+#============================================================
+# [0700] Gear
+#============================================================
+
+# [0710] Salvageable Items
+Show
+  Sockets > 0
+  Rarity Normal Magic
+  SetBorderColor 0 0 200
+  SetFontSize 35
+
+Show
+  Quality > 1
+  Rarity Normal Magic
+  SetBorderColor 0 0 200
+  SetFontSize 35
+
+#--------------------------------------------------
+
+# [0720] Uniques
+Show
+  Rarity Unique
+  SetTextColor 175 96 37
+  SetBorderColor 175 96 37
+  SetBackgroundColor 53 13 13
+  PlayAlertSound 3 300
+  PlayEffect Brown
+  MinimapIcon 1 Brown Star
+  SetFontSize 40
+
+#--------------------------------------------------
+
+# [0730] Rares
+Show
+  Rarity Rare
+
+#--------------------------------------------------
+
+# [0740] Jewellery
+# Always show jewellery
+Show
+  Class == "Rings" "Amulets" "Belts"
+  Rarity Rare
+  PlayEffect Yellow
+  MinimapIcon 1 Yellow Moon
+  SetFontSize 40
+
+Show
+  Class == "Rings" "Amulets" "Belts"
+  Rarity Normal Magic
+  SetFontSize 35
+
+# Always show charms
+Show
+  Class == "Charms"
+  SetTextColor 0 240 190
+  PlayEffect Cyan Temp
+
+#--------------------------------------------------
+
+# [0750] Jewels
+Show
+  BaseType "Timeless"
+  SetTextColor 140 0 190
+  SetBorderColor 140 0 190
+  SetBackgroundColor 40 0 50
+  PlayAlertSound 1 300
+  PlayEffect Purple
+  MinimapIcon 1 Purple Star
+  SetFontSize 45
+
+Show
+  Class "Jewel"
+  BaseType "Ruby"
+  SetTextColor 200 0 0
+  SetBorderColor 200 0 0
+  SetBackgroundColor 50 0 0
+  PlayEffect Red Temp
+  MinimapIcon 1 Red Hexagon
+  SetFontSize 40
+
+Show
+  Class "Jewel"
+  BaseType "Emerald"
+  SetTextColor 0 200 0
+  SetBorderColor 0 200 0
+  SetBackgroundColor 0 50 0
+  PlayEffect Green Temp
+  MinimapIcon 1 Green Hexagon
+  SetFontSize 40
+
+Show
+  Class "Jewel"
+  BaseType "Sapphire"
+  SetTextColor 0 0 200
+  SetBorderColor 0 0 200
+  SetBackgroundColor 0 0 50
+  PlayEffect Blue Temp
+  MinimapIcon 1 Blue Hexagon
+  SetFontSize 40
+
+#--------------------------------------------------
+
+# [0760] Chance Orb Bases
+# TBA
+
+
+
+#============================================================
+# [0800] Campaign Progressive Display
+#============================================================
+# Hide normal gear on Cruel difficulty
+Hide
+  AreaLevel >= 45
+  Class == "Helmet" "Body Armour" "Gloves" "Boots" "Foci" "Shields" "Quivers" "Bows" "Crossbows" "One Hand Maces" "Two Hand Maces" "Quarterstaves" "Wands" "Sceptres" "Staves"
+  DropLevel < 45
+
+# Hide normal and advanced gear on maps
+Hide
+  AreaLevel >= 65
+  Class == "Helmet" "Body Armour" "Gloves" "Boots" "Foci" "Shields" "Quivers" "Bows" "Crossbows" "One Hand Maces" "Two Hand Maces" "Quarterstaves" "Wands" "Sceptres" "Staves"
+  DropLevel < 65
+
+# Flask progression
+Show
+  AreaLevel < 4
+  Class "Flasks"
+  BaseType "Lesser "
+
+Show
+  AreaLevel < 10
+  Class "Flasks"
+  BaseType "Medium "
+
+Show
+  AreaLevel < 16
+  Class "Flasks"
+  BaseType "Greater "
+
+Show
+  AreaLevel < 23
+  Class "Flasks"
+  BaseType "Grand "
+
+Show
+  AreaLevel < 30
+  Class "Flasks"
+  BaseType "Giant "
+
+Show
+  AreaLevel < 40
+  Class "Flasks"
+  BaseType "Colossal "
+
+Show
+  AreaLevel < 50
+  Class "Flasks"
+  BaseType "Gargantuan "
+
+Show
+  AreaLevel < 60
+  Class "Flasks"
+  BaseType "Transcendent "
+
+Show
+  AreaLevel < 70
+  Class "Flasks"
+  BaseType "Ultimate "
+
+# Always show quality Ultimate flasks
+Show
+  BaseType "Ultimate Life Flask" "Ultimate Mana Flask"
+  Quality >= 10
+
+Hide
+  Class "Flasks"
+
+Show
+  Class == "Helmet" "Body Armour" "Gloves" "Boots" "Foci" "Shields" "Quivers" "Bows" "Crossbows" "One Hand Maces" "Two Hand Maces" "Quarterstaves" "Wands" "Sceptres" "Staves"
+
+
+
+#============================================================
+# [0900] Fallbacks
+#============================================================
+# Unknown items
+Show
+  Rarity >= Normal
+  SetTextColor 255 255 0
+  SetBorderColor 255 0 255
+  SetBackgroundColor 0 255 255
+  PlayAlertSound 8 300
+  PlayEffect Pink
+  MinimapIcon 1 Red UpsideDownHouse
+  SetFontSize 45
+
+#--------------------------------------------------
+
+# Hide everything else
+Hide
