@@ -56,7 +56,7 @@
 #================================================================================
 
 # Softcore filter for Path of Exile 2 designed by Catulus (still a work in progress though)
-# Last updated on 2025-01-09 for Path of Exile version 0.1.0f
+# Last updated on 2025-01-10 for Path of Exile version 0.1.0f
 # Indexes in the Table of Contents can be used to quickly jump to a specific section
 # Overrides section can be used to setup the filter for a specific build's gearing needs
 
@@ -175,7 +175,7 @@ Show
   MinimapIcon 1 Cyan Triangle
   SetFontSize 40
 
-# Don't highlight level 16- skill gems, but do highlight 17+
+# Don't highlight level 16- skill gems after campaign, but do highlight 17+
 Show
   BaseType "Uncut Skill Gem"
   ItemLevel <= 16
@@ -243,7 +243,7 @@ Show
 # [0303] Chaos Tier (1+ ex)
 Show
   Class == "Stackable Currency"
-  BaseType "Orb of Annulment" "Orb of Chance" "Chaos Orb" "Gemcutter's Prism" "Glassblower's Bauble" "Regal Orb" "Artificer's Orb" "Chance Shard" "Armourer's Scrap"
+  BaseType "Orb of Annulment" "Orb of Chance" "Chaos Orb" "Gemcutter's Prism" "Glassblower's Bauble" "Regal Orb" "Artificer's Orb" "Chance Shard" "Armourer's Scrap" "Vaal Orb"
   SetTextColor 255 205 90
   SetBorderColor 255 205 90
   SetBackgroundColor 75 50 10
@@ -271,7 +271,7 @@ Show
 # [0305] Scroll Tier
 # Hide Scrolls of Wisdom on maps
 Hide
-  AreaLevel >= 65
+  AreaLevel >= 45
   Class == "Stackable Currency"
   BaseType "Scroll of Wisdom"
   Rarity <= Magic
@@ -1224,7 +1224,7 @@ Show
   Class "Flasks"
   BaseType "Ultimate "
 
-# Always show quality Ultimate flasks
+# Always show high quality Ultimate flasks
 Show
   BaseType "Ultimate Life Flask" "Ultimate Mana Flask"
   Quality >= 10
@@ -1242,7 +1242,6 @@ Show
 #============================================================
 # Unknown items
 Show
-  Rarity >= Normal
   SetTextColor 255 255 0
   SetBorderColor 255 0 255
   SetBackgroundColor 0 255 255
@@ -1250,8 +1249,3 @@ Show
   PlayEffect Pink
   MinimapIcon 1 Red UpsideDownHouse
   SetFontSize 45
-
-#--------------------------------------------------
-
-# Hide everything else
-Hide
